@@ -15,7 +15,7 @@ escribirArchivo :: FilePath -> [Int] -> IO ()
 escribirArchivo archivo costos = do
   writeFile archivo $ unwords (map show costos)
 
--- | Convierte una lista de listas de enteros (matriz) en un Map donde cada clave es una
+--   Convierte una lista de listas de enteros (matriz) en un Map donde cada clave es una
 --   tupla (i, j) que representa la posición en la grilla, y el valor es el entero correspondiente.
 --   Por ejemplo, la posición (0,0) corresponde al primer elemento de la primera fila,
 --   (0,1) al segundo elemento de la primera fila, (1,0) al primer elemento de la segunda fila, etc.
