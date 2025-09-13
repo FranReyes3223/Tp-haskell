@@ -15,15 +15,20 @@ escribirArchivo :: FilePath -> [Int] -> IO ()
 escribirArchivo archivo costos = do
   writeFile archivo $ unwords (map show costos)
 
---usa recursion de cola par
+-- | Convierte una lista de listas de enteros (matriz) en un Map donde cada clave es una
+--   tupla (i, j) que representa la posición en la grilla, y el valor es el entero correspondiente.
+--   Por ejemplo, la posición (0,0) corresponde al primer elemento de la primera fila,
+--   (0,1) al segundo elemento de la primera fila, (1,0) al primer elemento de la segunda fila, etc.
+--   Esto permite acceder rápidamente al valor de cualquier celda usando su posición.
 listasAGrilla :: Int -> Int -> [[Int]] -> Map (Int, Int) Int
 listasAGrilla n m lista = go 0 0 lista empty
   where
+    -- Recorre cada fila y columna, agregando cada elemento al Map con su posición (i, j)
     go _ _ [] acc = acc
     go i _ (fila:restoFilas) acc = go (i+1) 0 restoFilas (agregarFila i 0 fila acc)
+    -- Recorre una fila, agregando cada elemento al Map
     agregarFila _ _ [] acc = acc
-    agregarFila i j (x:xs) acc = agregarFila i (j+1) xs (insert (i, j) x acc)
-
+    agregarFila i j (x:xs) acc = agregarFila i (j+1) xs (insert (i, j) x acc)
 
 --calcula todos los caminos sin repetir los ya calculados
 --usando programacion dinamica(memoizacion)
