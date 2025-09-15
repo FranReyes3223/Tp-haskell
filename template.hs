@@ -3,6 +3,9 @@ import           Data.Map           (Map, empty, fromList, insert, lookup, (!))
 import           System.Environment (getArgs)
 import Prelude hiding (lookup)
 
+
+--Trabajo practico optimizacion
+-- Gabriel moreno, Ignacio Tasada, Franco Reyes
 leerArchivo :: FilePath -> IO (Int, Int, Int, [[Int]])
 leerArchivo archivo = do
   contenido <- readFile archivo
